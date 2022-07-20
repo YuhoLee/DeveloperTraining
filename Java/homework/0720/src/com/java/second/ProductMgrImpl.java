@@ -20,7 +20,7 @@ public class ProductMgrImpl {
 	public void add(Product pd) {	// 상품정보 추가
 		int idx = indexOf(pd.getPdnum());
         if(idx != -1) {
-            System.err.println("<명령 취소>  " + pd.getPdnum() + " / " + pd.getPdname() + "<----" + "중복되는 상품번호 삽입 시도!!");
+            System.err.println("<명령 취소>  \"" + pd.getPdnum() + "  " + pd.getPdname() + "\"  <----  " + "중복되는 상품번호 삽입 시도!!");
             try {
 				Thread.sleep(200);
 			} catch (InterruptedException e) {
@@ -119,8 +119,11 @@ public class ProductMgrImpl {
 		return tv;
 	}
 	
-	public void modifyPrice(Product pd, int price) {
+	public void modifyPrice(String pdnum, int price) {
+		Product pd = searchByNum(pdnum);
+		System.out.println("\n( 가격변경 )  \"" + pd.getPdnum() + " " + pd.getPdname() + "\"  :  " + pd.getPrice() + " ---> " + price);
 		pd.setPrice(price);
+		
 	}
 	
 	public int getTotalPrice() {
@@ -142,7 +145,7 @@ public class ProductMgrImpl {
 	            }
 	            else {
 	                pd.changeQuantity(-1 * quantity);
-	                System.out.println("\n( Sell )  " + pd.getPdnum() + " " + pd.getPdname() + "제품을 " + quantity + "개 팔았습니다.");
+	                System.out.println("\n( Sell )  \"" + pd.getPdnum() + " " + pd.getPdname() + "\" 제품을 " + quantity + "개 팔았습니다.");
 	            }
 	        }
 	    }
@@ -154,7 +157,7 @@ public class ProductMgrImpl {
         }
         else {
             pd.changeQuantity(quantity);
-            System.out.println("\n( Buy  )  " + pd.getPdnum() + " " + pd.getPdname() + "제품을 " + quantity + "개 샀습니다.");
+            System.out.println("\n( Buy  )  \"" + pd.getPdnum() + " " + pd.getPdname() + "\" 제품을 " + quantity + "개 샀습니다.");
         }
     }
 

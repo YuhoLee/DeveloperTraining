@@ -81,6 +81,9 @@ public class ProductTest {
 
         }
         
+        // "00003" 제품번호를 가진 제품 가격 변경 (20% 세일)
+        mgr.modifyPrice("00003", (int)(1859000 * 0.8));
+        
         // 제품 전체 목록
         System.out.println("\n********************제품 전체 목록********************");
         for(Product b : mgr.getList()) {
