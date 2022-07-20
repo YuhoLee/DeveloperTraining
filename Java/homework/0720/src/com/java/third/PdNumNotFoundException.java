@@ -1,4 +1,4 @@
-package com.java.second;
+package com.java.third;
 
 public class PdNumNotFoundException extends Exception{
 	private static final long serialVersionUID = 1L;

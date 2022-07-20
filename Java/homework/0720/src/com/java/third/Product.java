@@ -1,4 +1,4 @@
-package com.java.second;
+package com.java.third;
 
 public class Product {
 	private String pdnum;

@@ -1,4 +1,4 @@
-package com.java.second;
+package com.java.third;
 import java.util.ArrayList;
 
 public interface IProductMgr {

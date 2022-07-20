@@ -1,4 +1,4 @@
-package com.java.second;
+package com.java.third;
 
 public class Refrigerator extends Product{
 	private int volume;
