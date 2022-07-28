@@ -1,1 +1,1 @@
-# SSAFY
+# DeveloperTraining
