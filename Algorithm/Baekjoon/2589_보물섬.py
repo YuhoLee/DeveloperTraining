@@ -1,12 +1,13 @@
 from collections import deque
 dir = [[0,1],[0,-1],[1,0],[-1,0]]
+m = 0
 def BFS(px,py):
-    global h,w
+    global h,w,m
     q = deque()
     q.append((px,py,0))
     visited = [[False] * w for _ in range(h)]
     visited[py][px] = True
-    countList = []
+    count = 0
     while q:
         x,y,c = q.popleft()
         flag = False
@@ -18,9 +19,9 @@ def BFS(px,py):
                     flag = True
                     visited[dy][dx] = True
                     q.append((dx,dy,c+1))
-        if not flag: countList.append(c)
-
-    return max(countList)
+        if not flag:
+            if count < c: count = c
+    if m < count: m = count
 
 h,w = map(int, input().split())
 arr = [list(input()) for _ in range(h)]
@@ -28,5 +29,5 @@ lengthList = []
 for i in range(h):
     for j in range(w):
         if arr[i][j] == 'L':
-            lengthList.append(BFS(j,i))
-print(max(lengthList))
+            BFS(j,i)
+print(m)
