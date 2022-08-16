@@ -1,5 +1,5 @@
 from collections import deque
-dir = [[0,1],[0,-1],[1,0],[-1,0]]
+dir = [(0,1),(0,-1),(1,0),(-1,0)]
 m = 0
 def BFS(px,py):
     global h,w,m
@@ -26,8 +26,15 @@ def BFS(px,py):
 h,w = map(int, input().split())
 arr = [list(input()) for _ in range(h)]
 lengthList = []
+
 for i in range(h):
     for j in range(w):
         if arr[i][j] == 'L':
-            BFS(j,i)
+            s = 0
+            for dx, dy in dir:
+                px,py = j+dx,i+dy
+                if 0 <= px < w and 0 <= py < h and arr[py][px] == 'L':
+                    s += 1
+            if s <= 2:
+                BFS(j,i)
 print(m)
