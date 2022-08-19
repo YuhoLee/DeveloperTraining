@@ -21,31 +21,29 @@ else:
         hit = 0
         monster = mm
         while monster > 0:
-            success = False
             shoot = [False]*3
-            for dd in range(1,d+1):
-                visited = [[False] * w for _ in range(h)]
-                for i in range(-dd+1,dd):
-                    for j, (y, x) in enumerate(archer):
+            visited = [[False] * w for _ in range(h)]
+            for j, (y, x) in enumerate(archer):
+                success = False
+                if not shoot[j]:
+                    for dd in range(1,d+1):
+                        for i in range(-dd+1,dd):
                             px = x+i
                             if i <= 0: i *= -1
                             py = y-dd+i
                             if 0 <= px < w and 0 <= py < h:
-                                if arr[py][px] == 1 and not shoot[j]:
+                                if arr[py][px] == 1:
                                     visited[py][px] = True
                                     shoot[j] = True
+                                    success = True
                                     break
-                for r in range(h):
-                    for c in range(w):
-                        if visited[r][c]:
-                            arr[r][c] = 0
-                            hit += 1
-                            monster -= 1
-
-            for s in arr:
-                print(s)
-            print('------------', a1,a2,a3)
-            print(hit)
+                        if success: break
+            for r in range(h):
+                for c in range(w):
+                    if visited[r][c]:
+                        arr[r][c] = 0
+                        hit += 1
+                        monster -= 1
 
             for ar in arr[h-1]:
                 if ar == 1: monster -= 1
@@ -53,11 +51,6 @@ else:
                 for j in range(w):
                     arr[i+1][j] = arr[i][j]
             arr[0] = [0]*w
-
-
-
         if res < hit: res = hit
 
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
     print(res)
-
