@@ -50,5 +50,7 @@ while True:
     if not visited[ny][nx]:
         direction = next_dir(direction)
     if storm_x == 0 and storm_y == 0: break
+for a in arr:
+    print(a)
 
 print(out_sand)
