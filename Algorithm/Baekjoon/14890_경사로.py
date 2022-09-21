@@ -18,7 +18,6 @@ for test in range(1,t+1):
                 if i >= n:
                     count += 1
                     break
-
                 elif i < n-1:
                     can = True
                     # 현재와 다음 칸의 차이가 1보다 클 시 카운트X, 탈출

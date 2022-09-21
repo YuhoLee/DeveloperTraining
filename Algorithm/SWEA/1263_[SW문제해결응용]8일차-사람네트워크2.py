@@ -45,7 +45,7 @@ def BFS(s):
         if sum(shortest_dis[s]) > res:
             break
         for i in range(n):
-            if p == i: continue
+            if s == i: continue
             if not visited[i] and network[p][i]:
                 q.append((i,c+1))
                 visited[p] = True
