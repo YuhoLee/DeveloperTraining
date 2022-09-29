@@ -13,17 +13,21 @@ dir = [[1,0],[0,1],[-1,0],[0,-1]]
 # 방향에 따라 움직임
 def move(d):
     tmp = dice[3][1]
+    # 동쪽 이동
     if d == 0:
         dice[3][1] = dice[1].pop(-1)
         dice[1].insert(0,tmp)
+    # 남쪽 이동
     elif d == 1:
         tmp = dice[3][1]
         for i in range(2,-1,-1):
             dice[i+1][1] = dice[i][1]
         dice[0][1] = tmp
+    # 서쪽 이동
     elif d == 2:
         dice[3][1] = dice[1].pop(0)
         dice[1].append(tmp)
+    # 북쪽 이동
     elif d == 3:
         tmp = dice[0][1]
         for i in range(3):
@@ -44,6 +48,7 @@ def get_score(x,y,target):
             px,py = x+dx,y+dy
             if not(0 <= px < m and 0 <= py < n):
                 continue
+            # 방문하지 않았으며 현재 찾고있는 숫자와 같은 숫자일 시에만
             if not visited[py][px] and arr[py][px] == target:
                 visited[py][px] = True
                 cnt += 1
