@@ -37,7 +37,9 @@ dirList = list(map(int, input().split()))
 px,py = x,y
 for d in dirList:
     dx,dy = dir[d-1]
+    # 일단 다음 칸으로 이동한 후에
     x,y = x+dx,y+dy
+    # 범위를 벗어났을 시 원래대로 돌려줌
     if not (0 <= x < m and 0 <= y < n):
         x,y = x-dx,y-dy
         continue

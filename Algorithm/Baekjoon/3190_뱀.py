@@ -1,5 +1,6 @@
 dir = [[1,0],[0,1],[-1,0],[0,-1]]
 
+# init
 n = int(input())
 k = int(input())
 arr = [[0]*n for _ in range(n)]
@@ -37,11 +38,15 @@ while True:
     arr[hy][hx] = 0
     time += 1
 
+    # 회전할게 있으며 현재 시간이 첫 인덱스 회전할 시간과 같을 시
     if len(rotate) > 0 and time == int(rotate[0][0]):
+        # 반시계 방향
         if rotate[0][1] == 'L':
             d = (d-1) % 4
+        # 시계 방향
         elif rotate[0][1] == 'D':
             d = (d+1) % 4
+        # 방향 전환
         arr_snake[hy][hx] = d
         rotate.pop(0)
 print(time+1)
