@@ -1,4 +1,3 @@
-import copy
 # ↑, ↖, ←, ↙, ↓, ↘, →, ↗
 dir = [[0,-1],[-1,-1],[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1]]
 
@@ -53,7 +52,7 @@ def dfs(sx, sy, score, arr):
         # 물고기가 있을 때만 탐색
         if (0 <= px < 4 and 0 <= py < 4) and arr[py][px][0] > 0:
             # 3차원 배열을 슬라이싱으로 어떻게 복사할지 몰라서 deepcopy로 하였음
-            dfs(px, py, score, copy.deepcopy(arr))
+            dfs(px, py, score, [[a[:] for a in b[:]] for b in arr])
 
 
 arr = [[] for _ in range(4)]
