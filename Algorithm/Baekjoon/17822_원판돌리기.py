@@ -32,7 +32,6 @@ def search(x,y):
                 # 삭제 개수 증가
                 c += 1
                 q.append((px,py))
-                visited[py][px] = True
     # 삭제 개수가 1개보다 많으면 -> 인접한게 있음
     # 삭제 개수가 1개이면 -> 인접한거 없음
     if c > 1: return True
