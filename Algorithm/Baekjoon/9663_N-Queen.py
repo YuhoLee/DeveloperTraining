@@ -25,6 +25,7 @@ def dfs(x,y,c):
                 col[i] = 0
                 arr[y][i] = 0
 
+
 n = int(input())
 arr = [[0]*n for _ in range(n)]
 col = [0] * n
